@@ -4,9 +4,11 @@ const userId = document.getElementById("user-id-filter");
 const idFrom = document.getElementById("id-from-filter");
 const idTo = document.getElementById("id-to-filter");
 const completed = document.getElementById("completed");
+const btnClear = document.getElementById("clear-button");
 let list;
 
 function filter() {
+    clear();
     fetch(fetchURL).then(response => response.json())
         .then(json => {
             list = json;
@@ -25,3 +27,13 @@ function filter() {
             });
         });
 };
+
+function clear() {
+    while (listContainer.firstChild) {
+        listContainer.removeChild(listContainer.lastChild);
+    };
+    console.log('czysci');
+
+};
+
+btnClear.addEventListener('click', clear);
