@@ -12,14 +12,12 @@ function filter() {
     fetch(fetchURL).then(response => response.json())
         .then(json => {
             list = json;
-            console.log(list);
             let thisParticularTask = list.filter(function (task) {
                 return task.userId == userId.value &&
                     task.id >= idFrom.value &&
                     task.id <= idTo.value &&
                     task.completed == completed.checked
             });
-            console.log(thisParticularTask);
             thisParticularTask.forEach(function (task, i) {
                 let returnedData = document.createElement("p");
                 returnedData.innerHTML = ` UserID: ${task.userId}, ID: ${task.id}, Title: ${task.title}, Completed: ${task.completed}`;
@@ -32,8 +30,6 @@ function clear() {
     while (listContainer.firstChild) {
         listContainer.removeChild(listContainer.lastChild);
     };
-    console.log('czysci');
-
 };
 
 btnClear.addEventListener('click', clear);
