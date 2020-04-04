@@ -5,3 +5,11 @@ const idFrom = document.getElementById("id-from-filter");
 const idTo = document.getElementById("id-to-filter");
 const completed = document.getElementById("completed");
 let list;
+
+function filter() {
+    fetch(fetchURL).then(response => response.json())
+        .then(json => {
+            list = json;
+            console.log(list);
+        });
+};
